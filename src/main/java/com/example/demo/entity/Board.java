@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class TableWindow {
+public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class TableWindow {
 
     private String name;
 
-    @OneToMany( mappedBy = "tableWindow")
+    @OneToMany( mappedBy = "board")
     private List<Card> cards;
 
 

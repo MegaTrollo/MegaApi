@@ -18,5 +18,5 @@ public class Card {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "tableWindow_id")
-    private TableWindow tableWindow;
+    private Board board;
 }
