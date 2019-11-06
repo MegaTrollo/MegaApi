@@ -15,8 +15,8 @@ public class Card {
 
     private String name;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "tableWindow_id")
-    private Board board;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "tableWindow_id")
+//    private Board board;
 }
