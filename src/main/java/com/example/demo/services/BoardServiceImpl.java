@@ -23,12 +23,19 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Board changeNameById(int id, String name) {
-        return this.boardRepository.updateTableWindowNameById(id, name);
+    public Board changeNameById(Long id, String name) {
+        Board boardToUpdate = boardRepository.getBoardById(id);
+        boardToUpdate.setName(name);
+        return boardRepository.save(boardToUpdate);
     }
 
     @Override
     public Board save(Board board) {
         return this.boardRepository.save(board);
+    }
+
+    @Override
+    public Board getBoardById(Long id) {
+        return this.boardRepository.getBoardById(id);
     }
 }

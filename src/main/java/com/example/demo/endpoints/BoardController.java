@@ -25,8 +25,13 @@ public class BoardController {
         return ResponseEntity.ok(boardService.getAll());
     }
 
+    @GetMapping("/{id}")
+    ResponseEntity<Board> getBoardById(@PathVariable Long id) {
+        return ResponseEntity.ok(boardService.getBoardById(id));
+    }
+
     @PostMapping("/rename/{id}/{name}")
-    ResponseEntity<Board> changeNameById(@PathVariable int id, @PathVariable String name) {
+    ResponseEntity<Board> changeNameById(@PathVariable Long id, @PathVariable String name) {
         return ResponseEntity.ok(boardService.changeNameById(id, name));
     }
 

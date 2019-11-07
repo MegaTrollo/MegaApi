@@ -10,4 +10,6 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     @Query("update Board tw set tw.name = ?2 where tw.id = ?1")
     Board updateTableWindowNameById(int id, String name);
+
+    Board getBoardById(Long id);
 }
