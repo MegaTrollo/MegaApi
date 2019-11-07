@@ -12,4 +12,6 @@ public interface BoardService {
     Board changeNameById(int id, String name);
 
     Board save(Board board);
+
+    Board getBoardById(Long id);
 }
