@@ -7,18 +7,11 @@ import java.util.List;
 
 @Data
 @Entity
-public class TableWindow {
+public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private String name;
-
-    @OneToMany( mappedBy = "tableWindow")
-    private List<Card> cards;
-
-
-
-
 }
