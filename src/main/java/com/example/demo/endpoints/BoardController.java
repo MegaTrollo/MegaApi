@@ -31,7 +31,7 @@ public class BoardController {
     }
 
     @PostMapping("/rename/{id}/{name}")
-    ResponseEntity<Board> changeNameById(@PathVariable int id, @PathVariable String name) {
+    ResponseEntity<Board> changeNameById(@PathVariable Long id, @PathVariable String name) {
         return ResponseEntity.ok(boardService.changeNameById(id, name));
     }
 
