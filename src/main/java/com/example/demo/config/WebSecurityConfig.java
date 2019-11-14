@@ -1,6 +1,9 @@
 package com.example.demo.config;
 
 
+import com.example.demo.security.JwtAuthEntryPoint;
+import com.example.demo.security.JwtAuthTokenFilter;
+import com.example.demo.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
