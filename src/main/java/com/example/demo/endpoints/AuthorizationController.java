@@ -1,0 +1,15 @@
+package com.example.demo.endpoints;
+
+import com.example.demo.services.UserDetailsServiceImpl;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/auth")
+public class AuthorizationController {
+
+    private UserDetailsServiceImpl userDetailsService;
+
+}
