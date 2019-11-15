@@ -18,15 +18,21 @@ public class User implements Serializable {
 
     private String password;
 
+    private String firstName;
+
+    private String lastName;
+
     @ManyToOne(targetEntity = Role.class)
     private Role roles;
 
     public User() {
     }
 
-    public User(String email, String password, Role roles) {
+    public User(String email, String password, String firstName, String lastName, Role roles) {
         this.email = email;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.roles = roles;
     }
 }
