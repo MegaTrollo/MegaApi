@@ -30,13 +30,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private JwtProvider jwtProvider;
     private AuthenticationManager authenticationManager;
     private PasswordEncoder encoder;
+private RoleService roleService;
 
 @Autowired
-    public UserDetailsServiceImpl(UserRepository userRepository, JwtProvider jwtProvider, AuthenticationManager authenticationManager, PasswordEncoder encoder) {
+    public UserDetailsServiceImpl(UserRepository userRepository, JwtProvider jwtProvider, AuthenticationManager authenticationManager, PasswordEncoder encoder, RoleService roleService) {
         this.userRepository = userRepository;
         this.jwtProvider = jwtProvider;
         this.authenticationManager = authenticationManager;
         this.encoder = encoder;
+        this.roleService = roleService;
     }
 
     @Override
@@ -73,7 +75,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             return false;
         }
 
-        Role role = new Role(RoleName.USER);
+        Role role = roleService.getRole(RoleName.USER );
 
         User user = new User(registryModel.getEmail(), encoder.encode(registryModel.getPassword()), role);
 

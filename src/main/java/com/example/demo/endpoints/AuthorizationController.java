@@ -1,8 +1,12 @@
 package com.example.demo.endpoints;
 
+import com.example.demo.entity.Role;
+import com.example.demo.entity.RoleName;
 import com.example.demo.models.LoginModel;
 import com.example.demo.models.RegistryModel;
 import com.example.demo.models.ResponseWithUserAndRole;
+import com.example.demo.repository.RoleRepository;
+import com.example.demo.services.RoleService;
 import com.example.demo.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +21,8 @@ import javax.validation.Valid;
 public class AuthorizationController {
 
     private UserDetailsServiceImpl userDetailsService;
+    @Autowired
+    private RoleRepository roleService;
 
     @Autowired
     public AuthorizationController(UserDetailsServiceImpl userDetailsService) {
@@ -35,7 +41,6 @@ public class AuthorizationController {
 
         if (!userDetailsService.registerUser(registryModel))
             return new ResponseEntity<>("Fail -> Email is already in use!", HttpStatus.BAD_REQUEST);
-
 
 
         return ResponseEntity.ok().body("User registered successfully!");
