@@ -25,6 +25,11 @@ public class BoardController {
         return ResponseEntity.ok(boardService.getAll());
     }
 
+    @GetMapping("/allbyUserId/{userId}")
+    ResponseEntity<List<Board>> getAllByUserId(@PathVariable (value = "userId") Long userId){
+        return ResponseEntity.ok(boardService.getAllByUserId(userId));
+    }
+
     @GetMapping("/{id}")
     ResponseEntity<Board> getBoardById(@PathVariable Long id) {
         return ResponseEntity.ok(boardService.getBoardById(id));
@@ -35,8 +40,8 @@ public class BoardController {
         return ResponseEntity.ok(boardService.changeNameById(id, name));
     }
 
-    @PostMapping("/add")
-    ResponseEntity<Board> add(@RequestBody Board board) {
-        return ResponseEntity.ok(boardService.save(board));
+    @PostMapping("/add/{userId}")
+    ResponseEntity<Board> add(@PathVariable (value = "userId") Long userId,@RequestBody Board board) {
+        return ResponseEntity.ok(boardService.save(board,userId));
     }
 }

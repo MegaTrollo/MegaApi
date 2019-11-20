@@ -9,9 +9,11 @@ import java.util.List;
 public interface BoardService {
     List<Board> getAll();
 
+    List<Board> getAllByUserId(Long id);
+
     Board changeNameById(Long id, String name);
 
-    Board save(Board board);
+    Board save(Board board,Long userId);
 
     Board getBoardById(Long id);
 }
