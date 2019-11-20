@@ -1,9 +1,9 @@
 package com.example.demo.endpoints;
 
-import com.example.demo.entity.Board;
+
+import com.example.demo.entity.Card;
 import com.example.demo.entity.CardList;
-import com.example.demo.services.CardListService;
-import com.example.demo.services.CardListServiceImpl;
+import com.example.demo.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,21 +15,30 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/card")
 public class CardController {
-
-    private CardListServiceImpl cardListService;
+    private CardService cardService;
 
     @Autowired
-    public CardController(CardListServiceImpl cardListService) {
-        this.cardListService = cardListService;
+    public CardController(CardService cardService) {
+        this.cardService = cardService;
     }
 
-    @PostMapping("/addListCard/{boardId}")
-    public void addListCard(@PathVariable (value = "boardId") Long boardId,@Valid @RequestBody CardList cardList){
-        cardListService.addCardList(cardList,boardId);
+    @PostMapping("/addCard/{cardListId}")
+    public void addCard(@PathVariable(value = "cardListId") Long cardListId, @Valid @RequestBody Card card){
+        cardService.addCard(card,cardListId);
     }
 
-    @GetMapping("/getAllCardListByBoardId/{boardId}")
-    public ResponseEntity<List<CardList>> getAllCardListByBoardId(@PathVariable (value = "boardId") Long boardId){
-        return ResponseEntity.ok(cardListService.getAllCardListByBoardId(boardId));
+    @GetMapping("/getAllCardByCardListId/{cardListId}")
+    public ResponseEntity<List<Card>> getAllCardByCardListId(@PathVariable Long cardListId){
+        return ResponseEntity.ok(cardService.getAllCardByCardListId(cardListId));
+    }
+
+    @DeleteMapping("/deleteCard/{id}")
+    void deleteCard(@PathVariable Long id) {
+        cardService.deleteById(id);
+    }
+
+    @PostMapping("/changeDesc/{id}/{description}")
+    ResponseEntity<Card> changeDescById(@PathVariable Long id, @PathVariable String description) {
+        return ResponseEntity.ok(cardService.changeDescById(id, description));
     }
 }
