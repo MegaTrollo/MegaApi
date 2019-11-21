@@ -41,4 +41,10 @@ public class CardController {
     ResponseEntity<Card> changeDescById(@PathVariable Long id, @PathVariable String description) {
         return ResponseEntity.ok(cardService.changeDescById(id, description));
     }
+
+    @GetMapping("/getCardById/{cardId}")
+    public ResponseEntity<Card> getCardById(@PathVariable Long cardId){
+        return ResponseEntity.ok(cardService.getCardById(cardId));
+    }
+
 }
