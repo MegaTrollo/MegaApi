@@ -44,4 +44,9 @@ public class CardServiceImpl implements CardService {
         cardToUpdate.setDescription(desc);
         return cardRepository.save(cardToUpdate);
     }
+
+    @Override
+    public Card getCardById(Long cardId) {
+        return cardRepository.getById(cardId);
+    }
 }

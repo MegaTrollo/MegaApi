@@ -15,4 +15,6 @@ public interface CardService {
     void addCard(Card card, Long cardListId);
 
     Card changeDescById(Long Id,String desc);
+
+    Card getCardById(Long cardId);
 }
