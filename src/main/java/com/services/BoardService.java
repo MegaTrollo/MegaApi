@@ -9,7 +9,13 @@ import java.util.List;
 public interface BoardService {
     List<Board> getAll();
 
-    List<Board> getAllByUserId(Long id);
+    List<Board> getAllVisibleBoardsByUserId(Long id);
+
+    List<Board> getAllArchivedBoardsByUserId(Long id);
+
+    void deleteBoardByBoardId(Long id);
+
+    void changeIsArchiveBoardStatus(Long id, boolean isArchived);
 
     Board changeNameById(Long id, String name);
 

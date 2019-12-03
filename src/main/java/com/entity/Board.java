@@ -16,10 +16,12 @@ public class Board {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private User userId;
+    private User user;
 
     private String name;
+
+    private boolean isArchived = false;
 }

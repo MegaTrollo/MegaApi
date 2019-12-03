@@ -1,6 +1,7 @@
 package com.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table
+@NoArgsConstructor
 public class User implements Serializable {
 
     @Id
@@ -24,9 +26,6 @@ public class User implements Serializable {
 
     @ManyToOne(targetEntity = Role.class)
     private Role roles;
-
-    public User() {
-    }
 
     public User(String email, String password, String firstName, String lastName, Role roles) {
         this.email = email;
