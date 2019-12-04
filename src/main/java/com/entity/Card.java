@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -24,4 +25,7 @@ public class Card {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private CardList cardListId;
+
+    @OneToMany( mappedBy = "card")
+    private List<Image> images;
 }
