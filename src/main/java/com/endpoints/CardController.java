@@ -31,6 +31,11 @@ public class CardController {
         return ResponseEntity.ok(cardService.getAllCardByCardListId(cardListId));
     }
 
+    @GetMapping("/getAllArchiveCardByCardListId/{cardListId}")
+    public ResponseEntity<List<Card>> getAllArchiveCardByCardListId(@PathVariable Long cardListId){
+        return ResponseEntity.ok(cardService.getAllArchiveCardByCardListId(cardListId));
+    }
+
     @DeleteMapping("/deleteCard/{id}")
     void deleteCard(@PathVariable Long id) {
         cardService.deleteById(id);
@@ -46,4 +51,8 @@ public class CardController {
         return ResponseEntity.ok(cardService.getCardById(cardId));
     }
 
+    @PostMapping("/changeArchiveMode/{cardId}/{archiveMod}")
+    public ResponseEntity<Card> changeArchiveMode(@PathVariable Long cardId,@PathVariable Long archiveMod){
+        return ResponseEntity.ok(cardService.changeArchiveMod(cardId,archiveMod==0));
+    }
 }

@@ -16,4 +16,8 @@ public interface CardService {
     Card changeDescById(Long Id,String desc);
 
     Card getCardById(Long cardId);
+
+    Card changeArchiveMod(Long cardId,Boolean archiveMod);
+
+    List<Card> getAllArchiveCardByCardListId(Long cardListId);
 }
