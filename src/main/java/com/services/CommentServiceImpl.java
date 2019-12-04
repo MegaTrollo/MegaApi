@@ -25,7 +25,12 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comments> getAllByCardId(Long id) {
-        return commentRepository.getAllCommandByCardId(id);
+        List<Comments> commentsList = commentRepository.getAllCommandByCardId(id);
+        for(Comments comment:commentsList){
+            comment.getUserId().setPassword("");
+            comment.getUserId().setRoles(null);
+        }
+        return commentsList;
     }
 
     @Override
