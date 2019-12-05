@@ -39,4 +39,7 @@ public class Image {
         this.pic = pic;
         this.card = card;
     }
+
+    public Image() {
+    }
 }
