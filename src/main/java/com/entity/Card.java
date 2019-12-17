@@ -35,6 +35,9 @@ public class Card {
     @OneToMany( mappedBy = "card")
     private List<Image> images;
 
+    @OneToMany(mappedBy = "card")
+    private List<Activity> activity;
+
     public Card(String name, String description, CardList cardListId, List<Image> images) {
         this.name = name;
         this.description = description;

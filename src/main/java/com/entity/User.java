@@ -27,6 +27,9 @@ public class User implements Serializable {
     @ManyToOne(targetEntity = Role.class)
     private Role roles;
 
+    @OneToOne(mappedBy = "user")
+    private Activity activity;
+
     public User(String email, String password, String firstName, String lastName, Role roles) {
         this.email = email;
         this.password = password;
