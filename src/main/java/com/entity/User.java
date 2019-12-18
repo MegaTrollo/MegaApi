@@ -1,10 +1,12 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,6 +28,10 @@ public class User implements Serializable {
 
     @ManyToOne(targetEntity = Role.class)
     private Role roles;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "user")
+    private List<Activity> activity;
 
     public User(String email, String password, String firstName, String lastName, Role roles) {
         this.email = email;
