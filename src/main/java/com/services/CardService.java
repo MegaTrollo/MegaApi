@@ -7,17 +7,17 @@ import java.util.List;
 
 @Service
 public interface CardService {
-    void deleteById(Long id);
+    void deleteById(String id);
 
     List<Card> getAllCardByCardListId(Long cardListId);
 
     void addCard(Card card, Long cardListId);
 
-    Card changeDescById(Long Id,String desc);
+    Card changeDescById(String Id,String desc);
 
-    Card getCardById(Long cardId);
+    Card getCardById(String cardId);
 
-    Card changeArchiveMod(Long cardId,Boolean archiveMod);
+    Card changeArchiveMod(String cardId,Boolean archiveMod);
 
     List<Card> getAllArchiveCardByCardListId(Long cardListId);
 }

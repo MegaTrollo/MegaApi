@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface CardListRepository extends JpaRepository<CardList, Long> {
     @Query(value = "select c from CardList c where c.boardId.id = :ID")
-    List<CardList> findByBoardId(@Param("ID") Long ID);
+    List<CardList> findByBoardId(@Param("ID") String ID);
 }

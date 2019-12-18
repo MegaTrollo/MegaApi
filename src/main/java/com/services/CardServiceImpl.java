@@ -22,7 +22,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         cardRepository.deleteById(id);
     }
 
@@ -47,19 +47,19 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public Card changeDescById(Long id, String desc) {
+    public Card changeDescById(String id, String desc) {
         Card cardToUpdate = cardRepository.getOne(id);
         cardToUpdate.setDescription(desc);
         return cardRepository.save(cardToUpdate);
     }
 
     @Override
-    public Card getCardById(Long cardId) {
+    public Card getCardById(String cardId) {
         return cardRepository.getById(cardId);
     }
 
     @Override
-    public Card changeArchiveMod(Long cardId, Boolean archiveMod) {
+    public Card changeArchiveMod(String cardId, Boolean archiveMod) {
         Card card = cardRepository.getOne(cardId);
         card.setIsArchive(archiveMod);
         return cardRepository.save(card);

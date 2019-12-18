@@ -10,5 +10,5 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<Comments, Long> {
 
     @Query(value = "select c from Comments c where c.cardId.id = :ID")
-    List<Comments> getAllCommandByCardId(@Param("ID") Long ID);
+    List<Comments> getAllCommandByCardId(@Param("ID") String ID);
 }

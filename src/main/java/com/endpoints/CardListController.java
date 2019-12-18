@@ -22,12 +22,12 @@ public class CardListController {
     }
 
     @PostMapping("/addListCard/{boardId}")
-    public void addListCard(@PathVariable (value = "boardId") Long boardId,@Valid @RequestBody CardList cardList){
+    public void addListCard(@PathVariable (value = "boardId") String boardId,@Valid @RequestBody CardList cardList){
         cardListService.addCardList(cardList,boardId);
     }
 
     @GetMapping("/getAllCardListByBoardId/{boardId}")
-    public ResponseEntity<List<CardList>> getAllCardListByBoardId(@PathVariable (value = "boardId") Long boardId){
+    public ResponseEntity<List<CardList>> getAllCardListByBoardId(@PathVariable (value = "boardId") String boardId){
         return ResponseEntity.ok(cardListService.getAllCardListByBoardId(boardId));
     }
 

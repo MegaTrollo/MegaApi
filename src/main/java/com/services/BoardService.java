@@ -13,13 +13,13 @@ public interface BoardService {
 
     List<Board> getAllArchivedBoardsByUserId(Long id);
 
-    void deleteBoardByBoardId(Long id);
+    void deleteBoardByBoardId(String id);
 
-    void changeIsArchiveBoardStatus(Long id, boolean isArchived);
+    void changeIsArchiveBoardStatus(String id, boolean isArchived);
 
-    Board changeNameById(Long id, String name);
+    Board changeNameById(String id, String name);
 
-    Board save(Board board,Long userId);
+    void save(Board board,Long userId);
 
-    Board getBoardById(Long id);
+    Board getBoardById(String id);
 }

@@ -21,12 +21,12 @@ public class CommentController {
     }
 
     @PostMapping("/addComment/{cardId}/{userId}")
-    public void addComment(@PathVariable(value = "cardId") Long cardId,@PathVariable(value = "userId") Long userId, @Valid @RequestBody Comments comments){
+    public void addComment(@PathVariable(value = "cardId") String cardId,@PathVariable(value = "userId") Long userId, @Valid @RequestBody Comments comments){
         commentService.addComment(comments,cardId,userId);
     }
 
     @GetMapping("/getCommentByCardId/{cardId}")
-    public ResponseEntity<List<Comments>> getCommentByCardId(@PathVariable Long cardId){
+    public ResponseEntity<List<Comments>> getCommentByCardId(@PathVariable String cardId){
         return ResponseEntity.ok(commentService.getAllByCardId(cardId));
     }
 
