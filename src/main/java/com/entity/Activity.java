@@ -1,7 +1,9 @@
 package com.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,15 +15,15 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "card_id")
     private Card card;
-
 
     private String description;
 
@@ -32,5 +34,8 @@ public class Activity {
         this.card = card;
         this.description = description;
         this.actionDate = actionDate;
+    }
+
+    public Activity() {
     }
 }

@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface ActivityRepository  extends JpaRepository<Activity, Long> {
 
-    List<Activity>  getActivitiesByCard(Card card);
+    List<Activity>  getActivitiesByCard_Id(Long cardId);
 }

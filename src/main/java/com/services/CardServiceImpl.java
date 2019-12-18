@@ -44,17 +44,10 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void addCard(Card card, Long cardListId) {
-        Optional<CardList> list = cardListRepository.findById(cardListId);
-        if (list.isPresent()) {
-            card.setCardListId(list.get());
-            Card savedCard = cardRepository.save(card);
-            activityService.addActivity(savedCard, 2L, "Dodał karte");
-        }
-//
-//        cardListRepository.findById(cardListId).map( listCard -> {
-//            card.setCardListId(listCard);
-//            return cardRepository.save(card);
-//        });
+        cardListRepository.findById(cardListId).map(listCard -> {
+            card.setCardListId(listCard);
+            return cardRepository.save(card);
+        });
     }
 
     @Override
