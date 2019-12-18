@@ -26,8 +26,8 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.getActivitysByCardId(cardId));
     }
     @PostMapping("/add/card/{cardId}/user/{userId}")
-    ResponseEntity addActivity(@PathVariable Long cardId, @PathVariable Long userId){
-        activityService.addActivity(cardId, userId,"test,test,test,tes");
+    ResponseEntity addActivity(@PathVariable Long cardId, @PathVariable Long userId,@RequestBody String description){
+        activityService.addActivity(cardId, userId,description);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
