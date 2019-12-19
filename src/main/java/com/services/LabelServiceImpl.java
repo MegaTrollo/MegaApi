@@ -36,7 +36,7 @@ public class LabelServiceImpl implements LabelService {
     }
 
     @Override
-    public boolean deleteLabelById(Long labelId) {
+    public boolean deleteLabelById(int labelId) {
         Label labelToDelete = labelRepository.getOne(labelId);
         if (labelToDelete == null) {
             return false;
@@ -44,5 +44,20 @@ public class LabelServiceImpl implements LabelService {
 
         labelRepository.delete(labelToDelete);
         return true;
+    }
+
+    @Override
+    public Label getLabelByLabelId(int labelId) {
+        return labelRepository.getLabelById(labelId);
+    }
+
+    @Override
+    public void editLabel(Label label) {
+        Label lbl = labelRepository.getLabelById(label.getId());
+        lbl.setTitle(label.getTitle());
+        if (label.getColor() != null) {
+            lbl.setColor(label.getColor());
+        }
+        labelRepository.save(lbl);
     }
 }

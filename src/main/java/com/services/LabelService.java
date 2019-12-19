@@ -9,5 +9,9 @@ import java.util.List;
 public interface LabelService {
     List<Label> getLabelsByCardId(String cardId);
     void addNewLabelToCard(String cardId, Label label);
-    boolean deleteLabelById(Long labelId);
+    boolean deleteLabelById(int labelId);
+
+    Label getLabelByLabelId(int labelId);
+
+    void editLabel(Label label);
 }

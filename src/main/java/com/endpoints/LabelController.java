@@ -33,10 +33,19 @@ public class LabelController {
         return ResponseEntity.ok(labelService.getLabelsByCardId(cardId));
     }
 
+    @GetMapping("/getLabel/{labelId}")
+    public ResponseEntity<Label> getLabelByLabelId(@PathVariable int labelId){
+        return ResponseEntity.ok(labelService.getLabelByLabelId(labelId));
+    }
+
     @DeleteMapping("/deleteLabelById/{id}")
-    void deleteLabelById(@PathVariable Long id) {
+    void deleteLabelById(@PathVariable int id) {
         labelService.deleteLabelById(id);
     }
 
-
+    @PostMapping("/editLabel")
+    public ResponseEntity editLabel(@RequestBody Label label){
+        labelService.editLabel(label);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
