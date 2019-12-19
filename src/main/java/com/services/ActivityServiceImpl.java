@@ -28,7 +28,7 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public void addActivity(Long cardId, Long userId, String description) {
+    public void addActivity(String cardId, Long userId, String description) {
         Optional<User> userOptional = userRepository.findById(userId);
         Card card = cardRepository.getById(cardId);
         if (userOptional.isPresent()) {
