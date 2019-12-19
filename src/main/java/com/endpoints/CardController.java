@@ -22,7 +22,7 @@ public class CardController {
     }
 
     @PostMapping("/addCard/{cardListId}")
-    public void addCard(@PathVariable(value = "cardListId") Long cardListId, @Valid @RequestBody Card card){
+    public void addCard(@PathVariable(value = "cardListId") Long cardListId, @RequestBody Card card){
         cardService.addCard(card,cardListId);
     }
 

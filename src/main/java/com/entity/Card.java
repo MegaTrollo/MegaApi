@@ -1,6 +1,7 @@
 package com.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,13 +35,15 @@ public class Card {
     @JsonIgnore
     private CardList cardListId;
 
-    @OneToMany( mappedBy = "card")
+    @OneToMany(mappedBy = "card")
     private List<Image> images;
 
     @OneToMany(mappedBy = "card")
     private List<Activity> activity;
 
-    @OneToMany(mappedBy = "card")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "labels", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Label> labels;
 
     public Card(String name, String description, CardList cardListId, List<Image> images) {
