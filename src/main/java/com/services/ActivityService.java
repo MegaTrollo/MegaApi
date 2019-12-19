@@ -8,6 +8,6 @@ import java.util.List;
 
 @Service
 public interface ActivityService {
-    void addActivity(Long cardId, Long userId, String description);
+    void addActivity(String cardId, Long userId, String description);
     List<Activity> getActivitysByCardId(Long cardId);
 }

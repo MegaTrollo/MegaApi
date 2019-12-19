@@ -40,6 +40,9 @@ public class Card {
     @OneToMany(mappedBy = "card")
     private List<Activity> activity;
 
+    @OneToMany(mappedBy = "card")
+    private List<Label> labels;
+
     public Card(String name, String description, CardList cardListId, List<Image> images) {
         this.name = name;
         this.description = description;
