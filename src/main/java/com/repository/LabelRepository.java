@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface LabelRepository extends JpaRepository<Label, Long> {
+public interface LabelRepository extends JpaRepository<Label, Integer> {
     List<Label> getLabelsByCardId(String cardId);
-    void deleteById(Long id);
+    void deleteById(Integer id);
+
+    Label getLabelById(int labelId);
 }
