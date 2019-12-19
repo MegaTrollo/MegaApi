@@ -15,6 +15,7 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "user_id")
