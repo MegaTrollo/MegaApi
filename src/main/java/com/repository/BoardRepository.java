@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BoardRepository extends JpaRepository<Board, Long> {
+public interface BoardRepository extends JpaRepository<Board, String> {
 
-    Board getBoardById(Long id);
+    Board getBoardById(String id);
 
     List<Board> getAllByUserAndIsArchived(User user, boolean isArchived);
 
-    void deleteById(Long id);
+    void deleteById(String id);
 }

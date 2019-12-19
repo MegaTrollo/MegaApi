@@ -20,14 +20,14 @@ public class CardListServiceImpl implements CardListService{
         this.boardRepository = boardRepository;
     }
 
-    public void addCardList(CardList cardList,Long boardId){
+    public void addCardList(CardList cardList,String boardId){
         boardRepository.findById(boardId).map( board -> {
             cardList.setBoardId(board);
             return cardListRepository.save(cardList);
         });
     }
 
-    public List<CardList> getAllCardListByBoardId(Long boardId){
+    public List<CardList> getAllCardListByBoardId(String boardId){
         return cardListRepository.findByBoardId(boardId);
     }
 }

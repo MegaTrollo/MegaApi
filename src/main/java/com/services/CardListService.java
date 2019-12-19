@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface CardListService {
-     void addCardList(CardList cardList, Long boardId);
+     void addCardList(CardList cardList, String boardId);
 }

@@ -28,7 +28,7 @@ public class AtachmentController {
     @RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = "multipart/form-data")
     @ResponseBody
     public ResponseEntity<Card> addCardAtachment(@RequestPart("myFile") MultipartFile[] files, @RequestPart("card") Card card) throws IOException {
-        Long cardId = card.getId();
+        String cardId = card.getId();
         System.out.println(card);
         Card daoCard = cardService.getCardById(cardId);
         daoCard.setImages(imageService.uploadImageArrayForCard(files,daoCard));

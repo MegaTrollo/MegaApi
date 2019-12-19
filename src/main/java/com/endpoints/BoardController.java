@@ -27,38 +27,39 @@ public class BoardController {
     }
 
     @GetMapping("/allVisiblebyUserId/{userId}")
-    ResponseEntity<List<Board>> getAllByUserId(@PathVariable Long userId){
+    ResponseEntity<List<Board>> getAllByUserId(@PathVariable Long userId) {
         return ResponseEntity.ok(boardService.getAllVisibleBoardsByUserId(userId));
     }
 
     @GetMapping("/allArchivedbyUserId/{userId}")
-    ResponseEntity<List<Board>> getAllArchivedByUserId(@PathVariable Long userId){
+    ResponseEntity<List<Board>> getAllArchivedByUserId(@PathVariable Long userId) {
         return ResponseEntity.ok(boardService.getAllArchivedBoardsByUserId(userId));
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Board> getBoardById(@PathVariable Long id) {
+    ResponseEntity<Board> getBoardById(@PathVariable String id) {
         return ResponseEntity.ok(boardService.getBoardById(id));
     }
 
     @PostMapping("/rename/{id}/{name}")
-    ResponseEntity<Board> changeNameById(@PathVariable Long id, @PathVariable String name) {
+    ResponseEntity<Board> changeNameById(@PathVariable String id, @PathVariable String name) {
         return ResponseEntity.ok(boardService.changeNameById(id, name));
     }
 
     @PostMapping("/add/{userId}")
-    ResponseEntity<Board> add(@PathVariable Long userId,@RequestBody Board board) {
-        return ResponseEntity.ok(boardService.save(board,userId));
+    ResponseEntity<Board> add(@PathVariable Long userId, @RequestBody Board board) {
+        boardService.save(board, userId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/delete/{boardId}")
-    ResponseEntity deleteBoardById(@PathVariable Long boardId){
+    ResponseEntity deleteBoardById(@PathVariable String boardId) {
         boardService.deleteBoardByBoardId(boardId);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/changeArchiveStatus/{boardId}/{isArchived}")
-    ResponseEntity changeIsArchiveStatus(@PathVariable Long boardId, @PathVariable boolean isArchived){
+    ResponseEntity changeIsArchiveStatus(@PathVariable String boardId, @PathVariable boolean isArchived) {
         boardService.changeIsArchiveBoardStatus(boardId, isArchived);
         return new ResponseEntity(HttpStatus.OK);
     }

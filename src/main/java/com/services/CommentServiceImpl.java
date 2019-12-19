@@ -24,7 +24,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comments> getAllByCardId(Long id) {
+    public List<Comments> getAllByCardId(String id) {
         List<Comments> commentsList = commentRepository.getAllCommandByCardId(id);
         for(Comments comment:commentsList){
             comment.getUserId().setPassword("");
@@ -34,7 +34,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void addComment(Comments comments, Long cardId, Long userId) {
+    public void addComment(Comments comments, String cardId, Long userId) {
         cardRepository.findById(cardId).map( card -> {
             comments.setCardId(card);
             userRepository.findById(userId).map(user ->{

@@ -29,14 +29,14 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Board changeNameById(Long id, String name) {
+    public Board changeNameById(String id, String name) {
         Board boardToUpdate = boardRepository.getBoardById(id);
         boardToUpdate.setName(name);
         return boardRepository.save(boardToUpdate);
     }
 
     @Override
-    public Board getBoardById(Long id) {
+    public Board getBoardById(String id) {
         return boardRepository.getBoardById(id);
     }
 
@@ -53,13 +53,13 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void deleteBoardByBoardId(Long id) {
+    public void deleteBoardByBoardId(String id) {
         boardRepository.deleteById(id);
         log.info("Usuwam tablicę o id:" + id);
     }
 
     @Override
-    public void changeIsArchiveBoardStatus(Long id, boolean isArchived) {
+    public void changeIsArchiveBoardStatus(String id, boolean isArchived) {
         Board board = boardRepository.getBoardById(id);
         board.setArchived(isArchived);
         boardRepository.save(board);
@@ -67,11 +67,10 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Board save(Board board, Long userId) {
+    public void save(Board board, Long userId) {
         userRepository.findById(userId).map(user -> {
             board.setUser(user);
             return boardRepository.save(board);
         });
-        return board;
     }
 }

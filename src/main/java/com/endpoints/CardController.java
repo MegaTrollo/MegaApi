@@ -37,22 +37,22 @@ public class CardController {
     }
 
     @DeleteMapping("/deleteCard/{id}")
-    void deleteCard(@PathVariable Long id) {
+    void deleteCard(@PathVariable String id) {
         cardService.deleteById(id);
     }
 
     @PostMapping("/changeDesc/{id}/{description}")
-    ResponseEntity<Card> changeDescById(@PathVariable Long id, @PathVariable String description) {
+    ResponseEntity<Card> changeDescById(@PathVariable String id, @PathVariable String description) {
         return ResponseEntity.ok(cardService.changeDescById(id, description));
     }
 
     @GetMapping("/getCardById/{cardId}")
-    public ResponseEntity<Card> getCardById(@PathVariable Long cardId){
+    public ResponseEntity<Card> getCardById(@PathVariable String cardId){
         return ResponseEntity.ok(cardService.getCardById(cardId));
     }
 
     @PostMapping("/changeArchiveMode/{cardId}/{archiveMod}")
-    public ResponseEntity<Card> changeArchiveMode(@PathVariable Long cardId,@PathVariable Long archiveMod){
+    public ResponseEntity<Card> changeArchiveMode(@PathVariable String cardId,@PathVariable Long archiveMod){
         return ResponseEntity.ok(cardService.changeArchiveMod(cardId,archiveMod==0));
     }
 }
