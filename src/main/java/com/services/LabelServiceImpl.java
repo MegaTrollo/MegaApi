@@ -11,8 +11,8 @@ import java.util.List;
 
 @Service
 public class LabelServiceImpl implements LabelService {
-    LabelRepository labelRepository;
-    CardRepository cardRepository;
+    private LabelRepository labelRepository;
+    private CardRepository cardRepository;
 
     @Autowired
     public LabelServiceImpl(LabelRepository labelRepository, CardRepository cardRepository) {
@@ -22,23 +22,23 @@ public class LabelServiceImpl implements LabelService {
 
     @Override
     public List<Label> getLabelsByCardId(String cardId) {
-        List<Label> labels = labelRepository.getLabelsByCardId(cardId);
-        return labels;
+        return labelRepository.getLabelsByCardId(cardId);
     }
 
     @Override
     public void addNewLabelToCard(String cardId, Label label) {
         Card card = cardRepository.getById(cardId);
-        label.setCard(card);
-//        card.getLabels().add(label);
-//        cardRepository.save(card);
-        labelRepository.save(label);
+        List<Label> labels = card.getLabels();
+        label.setCardId(cardId);
+        labels.add(label);
+        card.setLabels(labels);
+        cardRepository.save(card);
     }
 
     @Override
     public boolean deleteLabelById(Long labelId) {
         Label labelToDelete = labelRepository.getOne(labelId);
-        if (labelToDelete.equals(null)) {
+        if (labelToDelete == null) {
             return false;
         }
 
